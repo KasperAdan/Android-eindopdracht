@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_background">#302d2d</color>
+    <color name="button_background">#444242</color>
+    <color name="app_name_navigation_screen">#A8A4A4</color>
 </resources>
