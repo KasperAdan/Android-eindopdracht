@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MapViewActivity"/>
+        <activity android:name=".NavigationViewActivity"/>
     </application>
 
 </manifest>

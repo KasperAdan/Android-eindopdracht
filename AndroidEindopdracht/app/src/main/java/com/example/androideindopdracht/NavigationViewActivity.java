@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NavigationViewActivity extends AppCompatActivity {
+public class NavigationViewActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton profileButton;
     private ImageButton backButton;
     private ImageButton mapButton;
@@ -23,37 +23,25 @@ public class NavigationViewActivity extends AppCompatActivity {
         this.mapButton = findViewById(R.id.mapButton);
         this.playButton = findViewById(R.id.playButton);
 
-        this.profileButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(NavigationViewActivity.this, ProfileViewActivity.class);
-                startActivity(i);
-            }
-        });
-
-        this.backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(NavigationViewActivity.this, ProfileViewActivity.class);
-                startActivity(i);
-            }
-        });
-
-        this.mapButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(NavigationViewActivity.this, MapViewActivity.class);
-                startActivity(i);
-            }
-        });
-
-        this.playButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(NavigationViewActivity.this, MapViewActivity.class);
-                startActivity(i);
-            }
-        });
+        profileButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
+        mapButton.setOnClickListener(this);
+        playButton.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.backButton:
+                break;
+            case R.id.playButton:
+                break;
+            case R.id.mapButton:
+                Intent i = new Intent(this, MapViewActivity.class);
+                startActivity(i);
+                break;
+            case R.id.profileButton:
+                break;
+        }
+    }
 }
