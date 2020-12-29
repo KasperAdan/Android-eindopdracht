@@ -88,14 +88,14 @@
             app:srcCompat="@drawable/map_icon" />
 
         <ImageButton
-            android:id="@+id/settingsButton"
+            android:id="@+id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/button_background"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/home_icon" />
+            app:srcCompat="@drawable/play_icon" />
 
     </LinearLayout>
 
