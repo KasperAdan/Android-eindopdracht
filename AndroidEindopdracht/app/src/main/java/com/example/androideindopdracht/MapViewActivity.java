@@ -9,14 +9,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.CancellationSignal;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
 import org.osmdroid.api.IMapView;
+import org.osmdroid.config.Configuration;
 import org.osmdroid.events.MapListener;
 import org.osmdroid.events.ScrollEvent;
 import org.osmdroid.events.ZoomEvent;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
@@ -33,6 +36,7 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_view);
 
+        Configuration.getInstance().setUserAgentValue("com.example.androideindopdracht");
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         LocationsListener locationsListener = new LocationsListener(this);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -48,15 +52,21 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, locationsListener);
 
         map = findViewById(R.id.osm_map);
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
+        map.setMultiTouchControls(true);
+        map.setDestroyMode(false);
+        map.getController().setZoom(7.5);
 
         ImageButton zoomIn = findViewById(R.id.map_zoom_in);
-        zoomIn.setOnClickListener(this);
         ImageButton zoomOut = findViewById(R.id.map_zoom_out);
-        zoomOut.setOnClickListener(this);
         ImageButton recenterMap = findViewById(R.id.map_recenter);
-        recenterMap.setOnClickListener(this);
         ImageButton home = findViewById(R.id.map_home_button);
+
+        zoomIn.setOnClickListener(this);
+        zoomOut.setOnClickListener(this);
+        recenterMap.setOnClickListener(this);
+        home.setOnClickListener(this);
 
         map.addMapListener(new MapListener() {
             @Override
@@ -73,16 +83,32 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //this will refresh the osmdroid configuration on resuming.
+        //if you make changes to the configuration, use
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
+        map.onResume(); //needed for compass, my location overlays, v6.0.0 and up
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //this will refresh the osmdroid configuration on resuming.
+        //if you make changes to the configuration, use
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Configuration.getInstance().save(this, prefs);
+        map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
+    }
+
     public void updateLocation(GeoPoint geoPoint) {
         location = geoPoint;
         if (isMapCentered){
             map.getController().setCenter(location);
         }
     }
-
-
-
-
 
     @Override
     public void onClick(View v) {
