@@ -98,7 +98,7 @@
             android:background="@color/button_background"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/playstop_selector" />
+            app:srcCompat="@drawable/play_icon" />
 
     </LinearLayout>
 

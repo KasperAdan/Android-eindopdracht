@@ -2,6 +2,7 @@ package com.example.androideindopdracht;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -27,6 +28,11 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
         backButton.setOnClickListener(this);
         mapButton.setOnClickListener(this);
         playButton.setOnClickListener(this);
+        if (DataClass.getInstance().isRunning()){
+            this.playButton.setImageResource(R.drawable.stop_icon);
+        }else{
+            this.playButton.setImageResource(R.drawable.play_icon);
+        }
     }
 
     @Override
@@ -35,6 +41,14 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
             case R.id.backButton:
                 break;
             case R.id.playButton:
+                DataClass.getInstance().setRunning(!DataClass.getInstance().isRunning());
+                if (DataClass.getInstance().isRunning()){
+//                    this.playButton.setImageResource(R.drawable.stop_icon);
+                    Intent i = new Intent(this, MapViewActivity.class);
+                    startActivity(i);
+                }else{
+                    this.playButton.setImageResource(R.drawable.play_icon);
+                }
                 break;
             case R.id.mapButton:
                 Intent i = new Intent(this, MapViewActivity.class);
