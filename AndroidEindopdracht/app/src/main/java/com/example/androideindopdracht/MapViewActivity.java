@@ -2,6 +2,7 @@ package com.example.androideindopdracht;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.Manifest;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.os.CancellationSignal;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import org.osmdroid.api.IMapView;
 import org.osmdroid.config.Configuration;
@@ -23,11 +25,13 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 public class MapViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MapView map;
     private GeoPoint location;
+    private Marker userMarker;
 
     private boolean isMapCentered = true;
 
@@ -49,14 +53,18 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, locationsListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, locationsListener);
 
         map = findViewById(R.id.osm_map);
         map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
         map.setMultiTouchControls(true);
         map.setDestroyMode(false);
-        map.getController().setZoom(7.5);
+        map.getController().setZoom(17.5);
+
+        userMarker = new Marker(map);
+        userMarker.setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.map_user_marker, null));
+        map.getOverlays().add(userMarker);
 
         ImageButton zoomIn = findViewById(R.id.map_zoom_in);
         ImageButton zoomOut = findViewById(R.id.map_zoom_out);
@@ -103,11 +111,20 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
     }
 
-    public void updateLocation(GeoPoint geoPoint) {
+    public void updateLocation(GeoPoint geoPoint, float bearing) {
         location = geoPoint;
         if (isMapCentered){
             map.getController().setCenter(location);
+            userMarker.setPosition(geoPoint);
+            userMarker.setRotation(bearing);
         }
+        map.onResume();
+
+        if (DataClass.getInstance().isRunning()){
+            DataClass.getInstance().getCurrentRoute().addGeoPoint(geoPoint);
+            //todo add polyline
+        }
+//        Toast.makeText(this, "location Update", Toast.LENGTH_SHORT).show();
     }
 
     @Override

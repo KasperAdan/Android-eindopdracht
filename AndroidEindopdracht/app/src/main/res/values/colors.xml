@@ -11,4 +11,5 @@
     <color name="button_background">#6b6b6b</color>
     <color name="app_name_navigation_screen">#A8A4A4</color>
     <color name="transparent">#00ffffff</color>
+    <color name="blue">#0040BD</color>
 </resources>
