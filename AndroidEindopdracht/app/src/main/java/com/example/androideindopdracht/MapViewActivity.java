@@ -126,6 +126,7 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.map_home_button:
                 Intent i = new Intent(this, NavigationViewActivity.class);
                 startActivity(i);
+                finish();
                 break;
         }
     }

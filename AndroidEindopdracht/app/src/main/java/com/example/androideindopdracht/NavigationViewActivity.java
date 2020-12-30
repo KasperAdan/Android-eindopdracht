@@ -2,9 +2,10 @@ package com.example.androideindopdracht;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,8 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
     private ImageButton backButton;
     private ImageButton mapButton;
     private ImageButton playButton;
+
+    private boolean isBackPressedBefore = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.backButton:
+                onBackPressed();
                 break;
             case R.id.playButton:
                 DataClass.getInstance().setRunning(!DataClass.getInstance().isRunning());
@@ -56,6 +60,24 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.profileButton:
                 break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isBackPressedBefore) {
+            super.onBackPressed();
+        }
+        else {
+            isBackPressedBefore = true;
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    isBackPressedBefore = false;
+                }
+            }, 2000);
         }
     }
 }
