@@ -127,6 +127,14 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
 //        Toast.makeText(this, "location Update", Toast.LENGTH_SHORT).show();
     }
 
+    public void updateLocation(GeoPoint geoPoint, float bearing) {
+        location = geoPoint;
+        if (isMapCentered){
+            map.getController().setCenter(location);
+            
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

@@ -17,8 +17,10 @@ public class LocationsListener implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        mapView.updateLocation(new GeoPoint(location), location.getBearing());
-
+        if (location.hasBearing()) {
+            mapView.updateLocation(new GeoPoint((location)), location.getBearing());
+        }
+        mapView.updateLocation(new GeoPoint(location));
     }
 
     @Override
