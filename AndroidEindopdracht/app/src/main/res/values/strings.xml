@@ -9,4 +9,16 @@
     <string name="timeNumber" />
     <string name="avgSpeedNumber" />
     <string name="dateNumber" />
+    <string name="totalDistance">Total Distance:</string>
+    <string name="totalTime">Total Time:</string>
+    <string name="totalDistanceNumber" />
+    <string name="totalTimeNumber" />
+    <string name="totalAvgDistance">Total Average Distance:</string>
+    <string name="totalAvgTime">Total Average Time:</string>
+    <string name="totalAvgDistanceNumber" />
+    <string name="totalAvgTimeNumber" />
+    <string name="longestRoute">Longest Route:</string>
+    <string name="totalAvgSpeed">Total Average Speed:</string>
+    <string name="longestRouteNumber" />
+    <string name="totalAvgSpeedNumber" />
 </resources>

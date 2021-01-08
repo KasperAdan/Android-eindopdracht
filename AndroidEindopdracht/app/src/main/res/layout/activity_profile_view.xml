@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
@@ -22,31 +23,192 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/button_background"
             android:scaleX="1.3"
             android:scaleY="1.3"
-            app:srcCompat="@drawable/baseline_keyboard_arrow_down_24"
-            android:background="@color/button_background"/>
+            app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:textAllCaps="false"
-            android:textColor="@color/main_background"
             android:background="@color/button_background"
             android:gravity="center"
+            android:text="YOUR PROFILE"
+            android:textAllCaps="false"
+            android:textColor="@color/main_background"
             android:textSize="25sp"
-            android:textStyle="bold|italic"
-            android:text="YOUR PROFILE"/>
+            android:textStyle="bold|italic" />
 
         <ImageButton
             android:id="@+id/resetButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/button_background"
             android:scaleX="1.3"
             android:scaleY="1.3"
-            android:background="@color/button_background"
             app:srcCompat="@drawable/reset_icon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mainProfileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/firstTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/totalDistance"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalDistance"
+                android:textColor="@color/button_background"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/totalTime"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalTime"
+                android:textColor="@color/button_background"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/firstNumberLayout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/totalDistanceNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalDistanceNumber"
+                android:textColor="@color/button_background"/>
+
+            <TextView
+                android:id="@+id/totalTimeNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalTimeNumber"
+                android:textColor="@color/button_background"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/totalAvgDistance"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalAvgDistance"
+                android:textColor="@color/button_background"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/totalAvgTime"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalAvgTime"
+                android:textColor="@color/button_background"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondNumberLayout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/totalAvgDistanceNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalAvgDistanceNumber"
+                android:textColor="@color/button_background"/>
+
+            <TextView
+                android:id="@+id/totalAvgTimeNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalAvgTimeNumber"
+                android:textColor="@color/button_background"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdTitleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:id="@+id/longestRoute"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/longestRoute"
+                android:textColor="@color/button_background"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/totalAvgSpeed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalAvgSpeed"
+                android:textColor="@color/button_background"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdNumberLayout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/longestRouteNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/longestRouteNumber"
+                android:textColor="@color/button_background"/>
+
+            <TextView
+                android:id="@+id/totalAvgSpeedNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/totalAvgSpeedNumber"
+                android:textColor="@color/button_background"/>
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
