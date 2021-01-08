@@ -25,6 +25,7 @@ public class DataClass {
             currentRoute = new Route();
         }
         else if (this.isRunning && !running){
+            currentRoute.setEndTime();
             routeHistory.add(currentRoute);
             currentRoute = null;
         }

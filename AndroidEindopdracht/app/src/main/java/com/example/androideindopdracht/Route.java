@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Route {
     private Date date;
+    private Date endDate;
     private ArrayList<GeoPoint> route;
 
     public Route() {
@@ -24,5 +25,13 @@ public class Route {
 
     public Date getDate() {
         return date;
+    }
+
+    public void setEndTime(){
+        this.endDate = new Date();
+    }
+
+    public Date getEndDate() {
+        return endDate;
     }
 }
