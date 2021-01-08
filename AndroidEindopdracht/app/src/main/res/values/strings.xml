@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Run Boy Run</string>
+    <string name="finishedRoute">Route:</string>
+    <string name="distance">Distance:</string>
+    <string name="date">Date:</string>
+    <string name="avgSpeed">AVG Speed:</string>
+    <string name="time">Time:</string>
+    <string name="distanceNumber"></string>
+    <string name="timeNumber" />
+    <string name="avgSpeedNumber" />
+    <string name="dateNumber" />
 </resources>
