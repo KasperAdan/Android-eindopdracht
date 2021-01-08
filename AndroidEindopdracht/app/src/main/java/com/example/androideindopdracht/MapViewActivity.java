@@ -63,7 +63,8 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         map.getController().setZoom(17.5);
 
         userMarker = new Marker(map);
-        userMarker.setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.map_user_marker, null));
+        userMarker.setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.map_user_marker_norotation, null));
+        userMarker.setInfoWindow(null);
         map.getOverlays().add(userMarker);
 
         ImageButton zoomIn = findViewById(R.id.map_zoom_in);
@@ -89,6 +90,7 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
                 return false;
             }
         });
+        map.invalidate();
     }
 
     @Override
@@ -111,20 +113,19 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
     }
 
-    public void updateLocation(GeoPoint geoPoint, float bearing) {
+    public void updateLocation(GeoPoint geoPoint) {
         location = geoPoint;
         if (isMapCentered){
             map.getController().setCenter(location);
-            userMarker.setPosition(geoPoint);
-            userMarker.setRotation(bearing);
         }
-        map.onResume();
+        userMarker.setPosition(geoPoint);
 
         if (DataClass.getInstance().isRunning()){
             DataClass.getInstance().getCurrentRoute().addGeoPoint(geoPoint);
             //todo add polyline
         }
 //        Toast.makeText(this, "location Update", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, DataClass.getInstance().getCurrentRoute().getDate().toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
