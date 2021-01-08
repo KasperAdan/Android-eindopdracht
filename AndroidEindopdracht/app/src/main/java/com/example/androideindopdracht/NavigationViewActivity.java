@@ -69,6 +69,8 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
                 startActivity(i);
                 break;
             case R.id.profileButton:
+                Intent profile = new Intent(this, ProfileViewActivity.class);
+                startActivity(profile);
                 break;
         }
     }
