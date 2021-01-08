@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.CancellationSignal;
@@ -26,13 +27,14 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
+import org.osmdroid.views.overlay.Polyline;
 
 public class MapViewActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MapView map;
     private GeoPoint location;
     private Marker userMarker;
-
+    private Polyline polyline;
     private boolean isMapCentered = true;
 
     @Override
@@ -67,6 +69,15 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         userMarker.setInfoWindow(null);
         map.getOverlays().add(userMarker);
 
+        if (DataClass.getInstance().isRunning()) {
+            polyline = new Polyline();
+            polyline.setTitle("running route");
+            polyline.getOutlinePaint().setStrokeWidth(10f);
+            polyline.getOutlinePaint().setColor(Color.RED);
+            polyline.setPoints(DataClass.getInstance().getCurrentRoute().getRoute());
+            map.getOverlayManager().add(polyline);
+        }
+
         ImageButton zoomIn = findViewById(R.id.map_zoom_in);
         ImageButton zoomOut = findViewById(R.id.map_zoom_out);
         ImageButton recenterMap = findViewById(R.id.map_recenter);
@@ -77,19 +88,6 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         recenterMap.setOnClickListener(this);
         home.setOnClickListener(this);
 
-        map.addMapListener(new MapListener() {
-            @Override
-            public boolean onScroll(ScrollEvent event) {
-                isMapCentered = false;
-//                Log.i(IMapView.LOGTAG, System.currentTimeMillis() + " onScroll " + event.getX() + "," + event.getY());
-                return true;
-            }
-
-            @Override
-            public boolean onZoom(ZoomEvent event) {
-                return false;
-            }
-        });
         map.invalidate();
     }
 
@@ -113,7 +111,7 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
     }
 
-    public void updateLocation(GeoPoint geoPoint) {
+    public void updateLocation(GeoPoint geoPoint, float speed) {
         location = geoPoint;
         if (isMapCentered){
             map.getController().setCenter(location);
@@ -122,10 +120,11 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
 
         if (DataClass.getInstance().isRunning()){
             DataClass.getInstance().getCurrentRoute().addGeoPoint(geoPoint);
-            //todo add polyline
+            updateLine(geoPoint);
+            Toast.makeText(this, speed + "", Toast.LENGTH_SHORT).show();
         }
 //        Toast.makeText(this, "location Update", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, DataClass.getInstance().getCurrentRoute().getDate().toString(), Toast.LENGTH_SHORT).show();
+        map.invalidate();
     }
 
     @Override
@@ -139,7 +138,7 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.map_recenter:
                 map.getController().setCenter(location);
-                isMapCentered = true;
+                isMapCentered = !isMapCentered;
                 break;
             case R.id.map_home_button:
                 Intent i = new Intent(this, NavigationViewActivity.class);
@@ -147,5 +146,12 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
         }
+    }
+
+    public void updateLine(GeoPoint geo) {
+        polyline.addPoint(geo);
+        map.getOverlayManager().remove(polyline);
+        map.getOverlayManager().add(polyline);
+        map.invalidate();
     }
 }

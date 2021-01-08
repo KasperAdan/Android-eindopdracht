@@ -17,7 +17,8 @@ public class LocationsListener implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        mapView.updateLocation(new GeoPoint(location));
+        mapView.updateLocation(new GeoPoint(location), location.getSpeed());
+
     }
 
     @Override

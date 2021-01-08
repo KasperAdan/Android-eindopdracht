@@ -1,5 +1,7 @@
 package com.example.androideindopdracht;
 
+import org.osmdroid.views.overlay.Polyline;
+
 import java.util.ArrayList;
 
 public class DataClass {

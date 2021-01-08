@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class NavigationViewActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton profileButton;
@@ -17,6 +19,8 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
     private ImageButton playButton;
 
     private boolean isBackPressedBefore = false;
+    private NavigationRecyclerAdapter adapter;
+    private RecyclerView rc;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +40,11 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
         }else{
             this.playButton.setImageResource(R.drawable.play_icon);
         }
+
+        adapter = new NavigationRecyclerAdapter(DataClass.getInstance().getRouteHistory());
+        rc = findViewById(R.id.recyclerView);
+        rc.setAdapter(adapter);
+        rc.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -52,6 +61,7 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
                     startActivity(i);
                 }else{
                     this.playButton.setImageResource(R.drawable.play_icon);
+                    adapter.notifyDataSetChanged();
                 }
                 break;
             case R.id.mapButton:

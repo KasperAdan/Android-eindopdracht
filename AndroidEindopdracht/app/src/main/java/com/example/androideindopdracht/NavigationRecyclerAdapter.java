@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NavigationRecyclerAdapter extends RecyclerView.Adapter<NavigationRecyclerAdapter.ViewHolder> {
 
@@ -67,16 +69,26 @@ public class NavigationRecyclerAdapter extends RecyclerView.Adapter<NavigationRe
 
             // Get element from your dataset at this position and replace the
             // contents of the view with that element
-            viewHolder.finishedRoute.setText(position + 1);
-            viewHolder.dateNumber.setText(localDataSet.get(position).getDate().toString());
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            String date = format.format(localDataSet.get(position).getDate());
+            format.applyPattern("HH:mm:ss");
+            String time = format.format(localDataSet.get(position).getDate());
+
+            int timePassed = (int) (localDataSet.get(position).getEndDate().getTime() - localDataSet.get(position).getDate().getTime());
+            Date timePassedDate = new Date(timePassed);
+            String timePassedString = String.format("%02d:%02d:%02d", timePassed/3600000, timePassed/60000, timePassed/1000);
+
+            viewHolder.finishedRoute.setText(date);
+            viewHolder.dateNumber.setText(time);
+            viewHolder.distanceNumber.setText("---");
+            viewHolder.avgSpeedNumber.setText("---");
+            viewHolder.timeNumber.setText(timePassedString);
 
         }
 
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return localDataSet.length;
+            return localDataSet.size();
         }
-    }
-
 }
