@@ -47,7 +47,7 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
             case R.id.playButton:
                 DataClass.getInstance().setRunning(!DataClass.getInstance().isRunning());
                 if (DataClass.getInstance().isRunning()){
-//                    this.playButton.setImageResource(R.drawable.stop_icon);
+                    this.playButton.setImageResource(R.drawable.stop_icon);
                     Intent i = new Intent(this, MapViewActivity.class);
                     startActivity(i);
                 }else{
