@@ -141,7 +141,9 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
                 map.getController().zoomOut();
                 break;
             case R.id.map_recenter:
-                map.getController().setCenter(location);
+                if (!isMapCentered) {
+                    map.getController().setCenter(location);
+                }
                 isMapCentered = !isMapCentered;
                 break;
             case R.id.map_home_button:
