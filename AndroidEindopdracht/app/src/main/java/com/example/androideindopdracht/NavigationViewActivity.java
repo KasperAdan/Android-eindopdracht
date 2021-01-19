@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+
 public class NavigationViewActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton profileButton;
     private ImageButton backButton;
@@ -26,6 +30,12 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_view);
+        DataClass.getInstance().setContext(this);
+        try {
+            DataClass.getInstance().readData();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
         this.profileButton = findViewById(R.id.profileButton);
         this.backButton = findViewById(R.id.backButton);
         this.mapButton = findViewById(R.id.mapButton);
@@ -91,5 +101,16 @@ public class NavigationViewActivity extends AppCompatActivity implements View.On
                 }
             }, 2000);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        DataClass.getInstance().setRunning(false);
+        try {
+            DataClass.getInstance().writeData();
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+        super.onDestroy();
     }
 }

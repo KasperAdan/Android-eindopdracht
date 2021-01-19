@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.osmdroid.views.overlay.Polyline;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -75,15 +77,13 @@ public class NavigationRecyclerAdapter extends RecyclerView.Adapter<NavigationRe
             String time = format.format(localDataSet.get(position).getDate());
 
             int timePassed = (int) (localDataSet.get(position).getEndDate().getTime() - localDataSet.get(position).getDate().getTime());
-            Date timePassedDate = new Date(timePassed);
             String timePassedString = String.format("%02d:%02d:%02d", timePassed/3600000, timePassed/60000, timePassed/1000);
 
             viewHolder.finishedRoute.setText(date);
             viewHolder.dateNumber.setText(time);
-            viewHolder.distanceNumber.setText("---");
-            viewHolder.avgSpeedNumber.setText("---");
+            viewHolder.distanceNumber.setText(String.format("%.0f", localDataSet.get(position).getDistance()) + " m");
+            viewHolder.avgSpeedNumber.setText(String.format("%.2f", localDataSet.get(position).getDistance() / (timePassed/1000) * 3.6) + " km/h");
             viewHolder.timeNumber.setText(timePassedString);
-
         }
 
         // Return the size of your dataset (invoked by the layout manager)

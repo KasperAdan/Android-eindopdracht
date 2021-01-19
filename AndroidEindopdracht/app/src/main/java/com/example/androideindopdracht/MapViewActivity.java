@@ -121,7 +121,6 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         if (DataClass.getInstance().isRunning()){
             DataClass.getInstance().getCurrentRoute().addGeoPoint(geoPoint);
             updateLine(geoPoint);
-            Toast.makeText(this, speed + "", Toast.LENGTH_SHORT).show();
         }
 //        Toast.makeText(this, "location Update", Toast.LENGTH_SHORT).show();
         map.invalidate();
@@ -141,8 +140,7 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
                 isMapCentered = !isMapCentered;
                 break;
             case R.id.map_home_button:
-                Intent i = new Intent(this, NavigationViewActivity.class);
-                startActivity(i);
+                onBackPressed();
                 finish();
                 break;
         }
