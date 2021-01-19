@@ -74,7 +74,9 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
             polyline.setTitle("running route");
             polyline.getOutlinePaint().setStrokeWidth(10f);
             polyline.getOutlinePaint().setColor(Color.RED);
-            polyline.setPoints(DataClass.getInstance().getCurrentRoute().getRoute());
+            if (polyline != null) {
+                polyline.setPoints(DataClass.getInstance().getCurrentRoute().getRoute());
+            }
             map.getOverlayManager().add(polyline);
         }
 
@@ -120,7 +122,9 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
 
         if (DataClass.getInstance().isRunning()){
             DataClass.getInstance().getCurrentRoute().addGeoPoint(geoPoint);
-            updateLine(geoPoint);
+            if (polyline != null) {
+                updateLine(geoPoint);
+            }
         }
 //        Toast.makeText(this, "location Update", Toast.LENGTH_SHORT).show();
         map.invalidate();
