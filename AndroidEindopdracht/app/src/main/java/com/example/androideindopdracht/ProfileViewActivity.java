@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +15,14 @@ public class ProfileViewActivity extends AppCompatActivity implements View.OnCli
 
     private ImageButton closeButton;
     private ImageButton settingsButton;
+    private TextView totalDistance;
+    private TextView totalTime;
+    private TextView totalAvgDistance;
+    private TextView totalAvgTime;
+    private TextView longestRout;
+    private TextView totalAvgSpeed;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,9 +31,22 @@ public class ProfileViewActivity extends AppCompatActivity implements View.OnCli
 
         this.closeButton = findViewById(R.id.closeButton);
         this.settingsButton = findViewById(R.id.resetButton);
+        this.totalDistance = findViewById(R.id.totalDistanceNumber);
+        this.totalTime = findViewById(R.id.totalTimeNumber);
+        this.totalAvgDistance = findViewById(R.id.totalAvgDistanceNumber);
+        this.totalAvgTime = findViewById(R.id.totalAvgTimeNumber);
+        this.longestRout = findViewById(R.id.longestRouteNumber);
+        this.totalAvgSpeed = findViewById(R.id.totalAvgSpeedNumber);
 
         closeButton.setOnClickListener(this);
         settingsButton.setOnClickListener(this);
+
+        int distance = 0;
+
+        for (Route route : DataClass.getInstance().getRouteHistory()) {
+            distance += route.getDistance();
+        }
+        this.totalDistance.setText(distance);
 
     }
 

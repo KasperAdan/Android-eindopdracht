@@ -99,7 +99,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/totalDistanceNumber"
+                android:text=""
                 android:textColor="@color/button_background"/>
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/totalTimeNumber"
+                android:text=""
                 android:textColor="@color/button_background"/>
 
         </LinearLayout>
@@ -147,7 +147,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/totalAvgDistanceNumber"
+                android:text=""
                 android:textColor="@color/button_background"/>
 
             <TextView
@@ -155,7 +155,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/totalAvgTimeNumber"
+                android:text=""
                 android:textColor="@color/button_background"/>
 
         </LinearLayout>
@@ -195,7 +195,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/longestRouteNumber"
+                android:text=""
                 android:textColor="@color/button_background"/>
 
             <TextView
@@ -203,7 +203,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/totalAvgSpeedNumber"
+                android:text=""
                 android:textColor="@color/button_background"/>
 
         </LinearLayout>

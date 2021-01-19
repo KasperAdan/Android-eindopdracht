@@ -41,7 +41,7 @@
             android:id="@+id/dateNumber"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/dateNumber"
+            android:text=""
             android:textSize="15dp"
             android:textColor="@color/button_background"
             android:layout_weight="1"/>
@@ -60,7 +60,7 @@
             android:id="@+id/avgSpeedNumber"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/avgSpeedNumber"
+            android:text=""
             android:textSize="15dp"
             android:textColor="@color/button_background"
             android:layout_weight="1"/>
@@ -87,7 +87,7 @@
             android:id="@+id/distanceNumber"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/distanceNumber"
+            android:text=""
             android:textSize="15dp"
             android:textColor="@color/button_background"
             android:layout_weight="1"/>
@@ -106,7 +106,7 @@
             android:id="@+id/timeNumber"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/timeNumber"
+            android:text=""
             android:textSize="15dp"
             android:textColor="@color/button_background"
             android:layout_weight="1"/>
