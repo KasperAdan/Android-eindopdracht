@@ -144,7 +144,6 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
                 isMapCentered = !isMapCentered;
                 break;
             case R.id.map_home_button:
-                onBackPressed();
                 finish();
                 break;
         }

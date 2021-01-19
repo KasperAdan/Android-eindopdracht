@@ -69,8 +69,7 @@ public class ProfileViewActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.closeButton:
-                Intent close = new Intent(this, NavigationViewActivity.class);
-                startActivity(close);
+                finish();
                 break;
             case R.id.resetButton:
                 new AlertDialog.Builder(this)
