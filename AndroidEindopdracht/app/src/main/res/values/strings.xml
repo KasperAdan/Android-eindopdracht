@@ -2,7 +2,7 @@
     <string name="app_name">Run Boy Run</string>
     <string name="finishedRoute">Route:</string>
     <string name="distance">Distance:</string>
-    <string name="date">Date:</string>
+    <string name="startTime">Start Time:</string>
     <string name="avgSpeed">AVG Speed:</string>
     <string name="time">Time:</string>
 

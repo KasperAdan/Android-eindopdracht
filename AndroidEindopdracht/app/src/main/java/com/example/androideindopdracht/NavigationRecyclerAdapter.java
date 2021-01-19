@@ -3,16 +3,12 @@ package com.example.androideindopdracht;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.osmdroid.views.overlay.Polyline;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class NavigationRecyclerAdapter extends RecyclerView.Adapter<NavigationRecyclerAdapter.ViewHolder> {
 
@@ -60,7 +56,7 @@ public class NavigationRecyclerAdapter extends RecyclerView.Adapter<NavigationRe
         public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
             // Create a new view, which defines the UI of the list item
             View view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.last_route_item, viewGroup, false);
+                    .inflate(R.layout.route_item, viewGroup, false);
 
             return new ViewHolder(view);
         }

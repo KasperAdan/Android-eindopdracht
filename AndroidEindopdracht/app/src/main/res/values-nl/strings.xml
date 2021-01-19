@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Run Boy Run</string>
+    <string name="finishedRoute">Route:</string>
+    <string name="distance">Afstand:</string>
+    <string name="startTime">Start Tijd:</string>
+    <string name="avgSpeed">GEM Snelheid:</string>
+    <string name="time">Tijd:</string>
+    <string name="totalDistance">Totale Afstand:</string>
+    <string name="totalTime">Totale Tijd:</string>
+    <string name="totalAvgDistance">Totale Gemiddelde Afstand:</string>
+    <string name="totalAvgTime">Totale Gemiddelde Tijd:</string>
+    <string name="longestRoute">Langste Route:</string>
+    <string name="totalAvgSpeed">Totale Gemiddelde Snelheid:</string>
+</resources>
