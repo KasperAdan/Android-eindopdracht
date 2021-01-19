@@ -19,7 +19,7 @@ public class ProfileViewActivity extends AppCompatActivity implements View.OnCli
     private TextView totalTime;
     private TextView totalAvgDistance;
     private TextView totalAvgTime;
-    private TextView longestRout;
+    private TextView longestRoute;
     private TextView totalAvgSpeed;
 
 
@@ -35,18 +35,33 @@ public class ProfileViewActivity extends AppCompatActivity implements View.OnCli
         this.totalTime = findViewById(R.id.totalTimeNumber);
         this.totalAvgDistance = findViewById(R.id.totalAvgDistanceNumber);
         this.totalAvgTime = findViewById(R.id.totalAvgTimeNumber);
-        this.longestRout = findViewById(R.id.longestRouteNumber);
+        this.longestRoute = findViewById(R.id.longestRouteNumber);
         this.totalAvgSpeed = findViewById(R.id.totalAvgSpeedNumber);
 
         closeButton.setOnClickListener(this);
         settingsButton.setOnClickListener(this);
 
-        int distance = 0;
-
+        double distance = 0;
+        long timePassed = 0;
+        double longestRoute = 0;
+        int avgSpeed = 0;
         for (Route route : DataClass.getInstance().getRouteHistory()) {
             distance += route.getDistance();
+            timePassed +=  (route.getEndDate().getTime() - route.getDate().getTime());
+            if (route.getDistance() >= longestRoute){
+                longestRoute = route.getDistance();
+            }
         }
-        this.totalDistance.setText(distance);
+        String timePassedString = String.format("%02d:%02d:%02d", timePassed/3600000, timePassed/60000, timePassed/1000);
+
+
+        long avgMilliSecond = timePassed/DataClass.getInstance().getRouteHistory().size();
+        this.totalAvgTime.setText(String.format("%02d:%02d:%02d", avgMilliSecond/3600000, avgMilliSecond/60000, avgMilliSecond/1000));
+        this.totalTime.setText(timePassedString);
+        this.totalDistance.setText(String.format("%.2f",distance) + "m");
+        this.totalAvgDistance.setText(String.format("%.2f",distance / DataClass.getInstance().getRouteHistory().size()) + "m");
+        this.longestRoute.setText(String.format("%.2f",longestRoute) + "m");
+        this.totalAvgSpeed.setText(String.format("%.2f",(distance / (timePassed/1000)) * 3.6) + "km/h");
 
     }
 

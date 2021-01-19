@@ -76,7 +76,7 @@ public class NavigationRecyclerAdapter extends RecyclerView.Adapter<NavigationRe
             format.applyPattern("HH:mm:ss");
             String time = format.format(localDataSet.get(position).getDate());
 
-            int timePassed = (int) (localDataSet.get(position).getEndDate().getTime() - localDataSet.get(position).getDate().getTime());
+            long timePassed = (localDataSet.get(position).getEndDate().getTime() - localDataSet.get(position).getDate().getTime());
             String timePassedString = String.format("%02d:%02d:%02d", timePassed/3600000, timePassed/60000, timePassed/1000);
 
             viewHolder.finishedRoute.setText(date);
