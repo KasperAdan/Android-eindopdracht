@@ -12,4 +12,5 @@
     <string name="totalAvgTime">Totale Gemiddelde Tijd:</string>
     <string name="longestRoute">Langste Route:</string>
     <string name="totalAvgSpeed">Totale Gemiddelde Snelheid:</string>
+    <string name="yourLocation">Dit is uw locatie</string>
 </resources>

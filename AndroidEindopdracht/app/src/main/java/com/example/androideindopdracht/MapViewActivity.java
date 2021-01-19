@@ -65,8 +65,9 @@ public class MapViewActivity extends AppCompatActivity implements View.OnClickLi
         map.getController().setZoom(17.5);
 
         userMarker = new Marker(map);
+        userMarker.setSubDescription(getString(R.string.yourLocation));
         userMarker.setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.map_user_marker_norotation, null));
-        userMarker.setInfoWindow(null);
+//        userMarker.setInfoWindow(null);
         map.getOverlays().add(userMarker);
 
         if (DataClass.getInstance().isRunning()) {

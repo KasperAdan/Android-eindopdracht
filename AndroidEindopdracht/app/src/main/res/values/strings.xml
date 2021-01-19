@@ -14,5 +14,6 @@
 
     <string name="longestRoute">Longest Route:</string>
     <string name="totalAvgSpeed">Total Average Speed:</string>
+    <string name="yourLocation">This is your location</string>
 
 </resources>
