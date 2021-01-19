@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:configChanges="orientation|screenSize"
         android:theme="@style/Theme.AndroidEindopdracht">
         <activity android:name=".SplashScreenActivity">
             <intent-filter>

@@ -31,7 +31,7 @@
             android:id="@+id/date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/date"
+            android:text="@string/startTime"
             android:textColor="@color/button_background"
             android:textSize="15dp"
             android:layout_margin="5dp"
