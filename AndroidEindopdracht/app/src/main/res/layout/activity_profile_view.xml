@@ -61,13 +61,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginHorizontal="8dp">
 
         <LinearLayout
             android:id="@+id/firstTitleLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/totalDistance"
@@ -76,7 +78,9 @@
                 android:layout_weight="1"
                 android:text="@string/totalDistance"
                 android:textColor="@color/button_background"
-                android:textSize="16dp"/>
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/totalTime"
@@ -85,14 +89,17 @@
                 android:layout_weight="1"
                 android:text="@string/totalTime"
                 android:textColor="@color/button_background"
-                android:textSize="16dp"/>
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/firstNumberLayout"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/totalDistanceNumber"
@@ -100,7 +107,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=""
-                android:textColor="@color/button_background"/>
+                android:textColor="@color/button_background"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/totalTimeNumber"
@@ -108,14 +117,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=""
-                android:textColor="@color/button_background"/>
+                android:textColor="@color/button_background"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/secondTitleLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/totalAvgDistance"
@@ -124,7 +136,9 @@
                 android:layout_weight="1"
                 android:text="@string/totalAvgDistance"
                 android:textColor="@color/button_background"
-                android:textSize="16dp"/>
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/totalAvgTime"
@@ -133,14 +147,17 @@
                 android:layout_weight="1"
                 android:text="@string/totalAvgTime"
                 android:textColor="@color/button_background"
-                android:textSize="16dp"/>
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/secondNumberLayout"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/totalAvgDistanceNumber"
@@ -148,7 +165,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=""
-                android:textColor="@color/button_background"/>
+                android:textColor="@color/button_background"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/totalAvgTimeNumber"
@@ -156,14 +175,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=""
-                android:textColor="@color/button_background"/>
+                android:textColor="@color/button_background"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/thirdTitleLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/longestRoute"
@@ -172,7 +194,9 @@
                 android:layout_weight="1"
                 android:text="@string/longestRoute"
                 android:textColor="@color/button_background"
-                android:textSize="16dp"/>
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/totalAvgSpeed"
@@ -181,14 +205,17 @@
                 android:layout_weight="1"
                 android:text="@string/totalAvgSpeed"
                 android:textColor="@color/button_background"
-                android:textSize="16dp"/>
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/thirdNumberLayout"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/longestRouteNumber"
@@ -196,7 +223,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=""
-                android:textColor="@color/button_background"/>
+                android:textColor="@color/button_background"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/totalAvgSpeedNumber"
@@ -204,7 +233,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text=""
-                android:textColor="@color/button_background"/>
+                android:textColor="@color/button_background"
+                android:textAlignment="center"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 
